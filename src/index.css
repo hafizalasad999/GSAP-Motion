@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* ==========================================================================
+     COLOR PALETTE (GSAP Chalkboard Theme)
+     ========================================================================== */
+  --color-just-black: #0e100f;
+  --color-surface-cream: #fffce1;
+  --color-surface-50: #7c7c6f;
+  --color-surface-25: #42433d;
+  --color-off-black: #191919;
+  
+  /* Brand and Accent Colors */
+  --color-shockingly-green: #0ae448;
+  --color-light-green: #abff84;
+  --color-orangey: #ff8709;
+  --color-pink: #fec5fb;
+  --color-lilac: #9d95ff;
+  --color-blue: #00bae2;
+  --color-core-green: #dfffd1;
+  --color-lipstick-pink: #f100cb;
+
+  /* Custom Button Gradients */
+  --background-image-gradient-green: linear-gradient(114.41deg, #0ae448 20.74%, #abff84 65.5%);
+  --background-image-gradient-summer: linear-gradient(135deg, #fec5fb 0%, #00bae2 100%);
+  --background-image-gradient-crush: linear-gradient(135deg, #ff8709 0%, #f100cb 100%);
+  --background-image-gradient-core: linear-gradient(135deg, #0ae448 0%, #9d95ff 100%);
+
+  /* ==========================================================================
+     TYPOGRAPHY (Mori Fallback Scale)
+     ========================================================================== */
+  --font-sans: 'Inter Tight', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+
+  /* Typographic Sizes, Line-heights, and Letter-spacings */
+  --text-caption: 14px;
+  --text-caption--line-height: 1.4;
+  --text-caption--letter-spacing: -0.14px;
+
+  --text-body-sm: 16px;
+  --text-body-sm--line-height: 1.15;
+
+  --text-body: 19px;
+  --text-body--line-height: 1.15;
+
+  --text-body-lg: 23px;
+  --text-body-lg--line-height: 1.38;
+  --text-body-lg--letter-spacing: -0.23px;
+
+  --text-subheading: 34px;
+  --text-subheading--line-height: 1.2;
+  --text-subheading--letter-spacing: -0.34px;
+
+  --text-heading-sm: 44px;
+  --text-heading-sm--line-height: 1.2;
+  --text-heading-sm--letter-spacing: -0.44px;
+
+  --text-heading: 66px;
+  --text-heading--line-height: 1.2;
+  --text-heading--letter-spacing: -0.66px;
+
+  --text-heading-lg: 101px;
+  --text-heading-lg--line-height: 1;
+  --text-heading-lg--letter-spacing: -1.11px;
+
+  --text-display: 224px;
+  --text-display--line-height: 0.9;
+  --text-display--letter-spacing: -4.48px;
+
+  /* ==========================================================================
+     SPACING SCALE (GSAP Editorial Density)
+     ========================================================================== */
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-76: 76px;
+  --spacing-96: 96px;
+  --spacing-108: 108px;
+
+  /* ==========================================================================
+     BORDER RADIUS (Minimal Controls & Cards)
+     ========================================================================== */
+  --radius-sm: 1px;
+  --radius-lg: 8px;
+  --radius-full: 100px;
+  
+  --radius-cards: 8px;
+  --radius-pills: 9999px;
+  --radius-buttons: 100px;
+  --radius-smalltags: 8px;
+
+  /* ==========================================================================
+     SHADOWS & ELEVATION
+     (Depth is produced via gradients and surface-step shifts, no drop shadows)
+     ========================================================================== */
+  --shadow-none: none;
+
+  /* ==========================================================================
+     MOTION & TRANSITION SYSTEM
+     ========================================================================== */
+  --transition-timing-function-gsap: cubic-bezier(0.23, 1, 0.32, 1);
+  --transition-duration-gsap: 450ms;
+
+  --animate-ambient-float: float 8s ease-in-out infinite;
+  --animate-pulse-slow: pulse-slow 4s ease-in-out infinite;
+  --animate-blob-spin: blob-spin 25s linear infinite;
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-15px) rotate(2deg);
+    }
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.85;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+
+  @keyframes blob-spin {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    33% {
+      transform: rotate(120deg) scale(1.1);
+    }
+    66% {
+      transform: rotate(240deg) scale(0.95);
+    }
+    100% {
+      transform: rotate(360deg) scale(1);
+    }
+  }
+}
+
+/* ==========================================================================
+   GLOBAL BASE STYLING
+   ========================================================================== */
+:root {
+  background-color: var(--color-just-black);
+  color: var(--color-surface-cream);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--color-just-black);
+}
+
+/* Lenis and Smooth Scrolling Integration */
+html {
+  scroll-behavior: initial;
+}
+
+html, body {
+  height: auto;
+}
+
+/* Scrollbar customization to fit Gsap design system */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-just-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-surface-50);
+}
+
+/* Custom Selection Highlight */
+::selection {
+  background-color: var(--color-surface-cream);
+  color: var(--color-just-black);
+}
+
+/* ==========================================================================
+   UTILITY CLASSES & EXPRESSIVE TOKENS
+   ========================================================================== */
+
+/* Font Weight Helpers */
+.font-mori-regular {
+  font-family: var(--font-sans);
+  font-weight: 400;
+}
+
+.font-mori-bold {
+  font-family: var(--font-sans);
+  font-weight: 600;
+}
+
+/* Typographic Utility Pairings */
+.text-display-hero {
+  font-size: var(--text-display);
+  line-height: var(--text-display--line-height);
+  letter-spacing: var(--text-display--letter-spacing);
+  font-weight: 600;
+}
+
+.text-heading-large {
+  font-size: var(--text-heading-lg);
+  line-height: var(--text-heading-lg--line-height);
+  letter-spacing: var(--text-heading-lg--letter-spacing);
+  font-weight: 600;
+}
+
+.text-heading-medium {
+  font-size: var(--text-heading);
+  line-height: var(--text-heading--line-height);
+  letter-spacing: var(--text-heading--letter-spacing);
+  font-weight: 600;
+}
+
+.text-heading-small {
+  font-size: var(--text-heading-sm);
+  line-height: var(--text-heading-sm--line-height);
+  letter-spacing: var(--text-heading-sm--letter-spacing);
+  font-weight: 600;
+}
+
+.text-subhead {
+  font-size: var(--text-subheading);
+  line-height: var(--text-subheading--line-height);
+  letter-spacing: var(--text-subheading--letter-spacing);
+  font-weight: 600;
+}
+
+.text-body-large {
+  font-size: var(--text-body-lg);
+  line-height: var(--text-body-lg--line-height);
+  letter-spacing: var(--text-body-lg--letter-spacing);
+}
+
+.text-body-standard {
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+}
+
+.text-body-small {
+  font-size: var(--text-body-sm);
+  line-height: var(--text-body-sm--line-height);
+}
+
+.text-caption-standard {
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  letter-spacing: var(--text-caption--letter-spacing);
+}
+
+/* Gradient Stroked Border (CTA button helper) */
+.gradient-border-green {
+  position: relative;
+  border: 1.5px solid transparent;
+  background: linear-gradient(var(--color-just-black), var(--color-just-black)) padding-box,
+              var(--gradient-shockingly-green) border-box;
+}
+
+.gradient-border-green:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+/* Premium Ghost Borders */
+.border-hairline {
+  border: 1px solid var(--color-surface-25);
+}
+
+.border-cream-ghost {
+  border: 1px solid var(--color-surface-cream);
+}
+
+/* Organic Ambient Lighting Shapes (No drop-shadows, pure glow) */
+.organic-glow-blob {
+  filter: blur(80px);
+  opacity: 0.6;
+  mix-blend-mode: screen;
+}
+
+/* Interactive transitions */
+.transition-gsap {
+  transition-property: all;
+  transition-timing-function: var(--transition-timing-function-gsap);
+  transition-duration: var(--transition-duration-gsap);
+}
+
+/* ==========================================================================
+   ADVANCED INTERACTIVE MOTION & CURSOR STYLES
+   ========================================================================== */
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-surface-cream);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--color-surface-cream);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  will-change: width, height, transform, background-color, border-color;
+  transition: width 0.35s cubic-bezier(0.23, 1, 0.32, 1), 
+              height 0.35s cubic-bezier(0.23, 1, 0.32, 1), 
+              background-color 0.35s cubic-bezier(0.23, 1, 0.32, 1), 
+              border-color 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.custom-cursor-ring.cursor-hover {
+  width: 80px;
+  height: 80px;
+  border-color: var(--color-shockingly-green);
+  background-color: rgba(10, 228, 72, 0.05);
+}
+
+/* Text Masking Reveal Clips */
+.text-mask-wrapper {
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.text-mask-content {
+  display: block;
+  will-change: transform, opacity;
+}
+

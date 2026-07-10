@@ -1,0 +1,6 @@
+{
+  "name": "GSAP Motion Showcase",
+  "description": "An exquisite premium motion design system and interactive playground showcasing GSAP animation disciplines on a chalkboard dark canvas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
